@@ -1,3 +1,5 @@
+let r1 = require('readline-sync');
+
 let names = ['Glyn Hines',
     'Liberty Ashley',
     'Rachel Dunne',
@@ -100,9 +102,9 @@ let names = ['Glyn Hines',
 let events = ['went to the supermarket', 'made a clay sculpture', 'invented portal technology', 'attended the Olympics', 'had a bad day', 'got married', 'had waffles for breakfast',
 'smoked weed for the first time', 'read a book', 'attended a party', 'bought new shoes at Target', 'found out his wife was a walrus', 'attempted to make coffee', 'finished their book',
 'played a concert at the Rose bowl', 'sent a letter to their grandma', 'went on a joy ride', 'began to feel ill', 'went to Jared\'s', 'enjoyed tofu', 'sang a pretty song', 'got aboard a plane',
-'met up with an old friend', 'finished college', 'sniffed a flower', 'went on a brisk walk', 'finally got their promotion', 'cleaned out the garage', 'stared a sowing class', 'lost their job',
-'got really impatient', 'understood what life was about', 'cared for a kitten', 'was running late to work', 'had a fine \'ol day', 'capitalized on cheap labor', 'decided to register to vote'];
-let dates = [];
+'met up with an old friend', 'finished college', 'sniffed a flower', 'went on a brisk walk', 'finally got their promotion', 'cleaned out the garage', 'started a sowing class', 'lost their job',
+'got really impatient', 'understood what life was about', 'cared for a kitten', 'was running late to work', 'had a fine \'ol day', 'capitalized on cheap labor', 'decided to register to vote',
+'had a little too much to drink', 'hiked across the Himalayas', 'found change in their pocket', 'pushed a big red button', 'got into a bit of a pickle', 'had too much to eat', ''];
 
 const genDates = () => {
     let arr = [];
@@ -114,6 +116,32 @@ const genDates = () => {
     }
     return arr;
 }
-dates = genDates();
 
-console.log(genDates());
+
+const genMessage = () => {
+    let dates = genDates();
+    let name = names[Math.floor(Math.random() * names.length)];
+    let event;
+    let event2;
+    while(true) {
+        event = events[Math.floor(Math.random() * events.length)];
+        event2 = events[Math.floor(Math.random() * events.length)];
+        if(event != event2) {
+            break;
+        }
+    }
+    
+    return `> On ${dates[Math.floor(Math.random() * dates.length)].toDateString()} ${name} ${event} and ${event2}\n`;
+}
+
+const menu = () => {
+    console.log('Welcome to Mixed Messages, press Enter to generate a random pseudo-event from the past. Type \'q\' and then Enter to quit');
+    while(true) {
+        let inp = r1.question('');
+        if(inp != 'q') {
+            console.log(genMessage());
+        } else {break}
+    }
+}
+
+menu();
