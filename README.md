@@ -24,5 +24,12 @@ and that's pretty much it.
 $ node mixedMessages.js
 ```
 
-Project version 1.0  
+## Resources
+---
+https://www.name-generator.org.uk/quick/ - Was used to generate names.
+
+---  
+<br>
+
+Project version 1.0   
 Project status: underway
